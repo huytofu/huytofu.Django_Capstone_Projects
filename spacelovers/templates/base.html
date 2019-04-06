@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Space Lovers</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+  </head>
+
+  <body>
+    <nav class='navbar mynav' role='navigation' id='navbar'>
+      <div class="container">
+        <a class='navbar-brand mynav my-navbar-text' href="{% url 'home' %}">SL Homepage</a>
+        <ul class='nav navbar-nav'>
+          <li><a class='navbar-link' href="https://github.com/huytofu">Huy's Github</a></li>
+          <li><a class='navbar-link' href="https://www.linkedin.com/in/huytoryan/">Huy's Linkedin</a></li>
+        </ul>
+        <ul class='nav navbar-nav navbar-right'>
+          {% if user.is_authenticated %}
+            <li><a class="my-navbar-text" href="{% url 'posts:create' %}">Create Post</a></li>
+            <li><a class="my-navbar-text" href="{% url 'posts:all' %}">Posts</a></li>
+            <li><a class="my-navbar-text" href="{% url 'groups:create' %}">Create Group</a></li>
+            <li><a class="my-navbar-text" href="{% url 'groups:all' %}">Groups</a></li>
+            <li><a class="my-navbar-text" href="{% url 'accounts:logout' %}">Logout</a></li>
+          {% else %}
+            <li><a class="my-navbar-text" href="{% url 'posts:all' %}">Posts</a></li>
+            <li><a class="my-navbar-text" href="{% url 'groups:all' %}">Groups </a></li>
+            <li><a class="my-navbar-text" href="{% url 'accounts:login' %}">Login</a></li>
+            <li><a class="my-navbar-text" href="{% url 'accounts:signup' %}">Signup</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+    {% if messages %}
+       <ul class="messages">
+           {% for message in messages %}
+               <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+           {% endfor %}
+       </ul>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+    </div>
+    <br><br><br>
+    <div class="container" id="credit">
+      <h5>
+        **********************************************************************<br>
+        --Credits to Sébastien Menard on <b>Codepen</b> for the animation--</h5>
+    </div>
+  </body>
+</html>

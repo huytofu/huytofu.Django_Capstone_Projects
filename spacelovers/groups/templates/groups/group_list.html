@@ -1,0 +1,67 @@
+{% extends 'groups/group_base.html' %}
+
+{% block pregroup %}
+<div class="col-md-4">
+  <div class="content">
+    {% if user.is_authenticated %}
+      <h3>Welcome to the groups page! <a href="{% url 'posts:for_user' username=user.username %}">@{{user.username}}</a></h3>
+      <div class="container-hi">
+      <h1><b>Hi! {{user.username}}</b></h1>
+      <div class="card card-with-shadow">
+        <div class="content">
+          <h3>Your Groups</h3>
+          <ul>
+            {% for member_group in user_groups %}
+            <li class='group li-with-bullet'>
+              <a href="{% url 'groups:single' slug=member_group.slug %}">{{member_group.name}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="card card-with-shadow">
+        <div class="content">
+          <h3>All Other Groups</h3>
+          <ul>
+            {% for other_group in other_groups %}
+            <li class='group li-with-bullet'>
+              <a href="{% url 'groups:single' slug=other_group.slug %}">{{other_group.name}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <a href="{% url 'groups:create' %}" class='btn btn-lg btn-primary'>
+      <span class='glyphicon glyphicon-plus-sign'></span>  Create A New Group!</a>
+    {% else %}
+      <h3>Welcome to the groups page!</h3>
+    {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block group_content %}
+<div class="col-md-8">
+  <center><h2 style='color:red'>Groups</h2></center>
+  <div class="list-group">
+    {% for group in object_list %}
+    <a class="list-group-item" href="{% url 'groups:single' slug=group.slug %}">
+      <h3 class='list-group-item-heading'><b>{{group.name}}</b></h3>
+      <div class="list-group-item-text container-fluid">
+        {{group.description}}
+        <div class="row">
+          <div class="col-md-4">
+            <span class='badge'>Member count: {{group.members.count}}</span>
+          </div>
+          <div class="col-md-4">
+            <span class='badge'>Post count: {{group.posts.count}}</span>
+          </div>
+        </div>
+      </div>
+    </a>
+    <br>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

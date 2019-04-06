@@ -1,0 +1,824 @@
+html{
+  width: 100vw;
+  height: 100vh;
+}
+
+body{
+  background-color: beige;
+  width: 100%;
+  height: 100%;
+}
+
+.container-hi {
+  margin-top: 20px;
+  padding-left: 40px;
+  padding-bottom: 30px;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: brown;
+}
+
+.list-group-item{
+  border-width: 2px;
+  border-color: black;
+}
+
+.mynav {
+  background-color: black;
+}
+
+.my-navbar-text {
+    color: white;
+}
+
+.navbar-link{
+  font-weight: bold;
+}
+
+#credit {
+  font-style: italic;
+  font-size: 1em;
+  font-family: sans-serif;
+  margin-right: 0px;
+  margin-left: 800px;
+}
+
+.planet, .cube, .face, .cosmos, .box, .orbit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+*, *::before, *::after {
+  outline: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.planet, .cube, .face {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.cosmos {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  perspective: 100vw;
+  background-color: #212121;
+}
+
+.galaxy {
+  animation-name: galaxyani;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.galaxy .box:nth-of-type( 1) .planet {
+  left: 0;
+  transform-origin: 0;
+  animation-duration: 25s;
+}
+
+.galaxy .box:nth-of-type( 1) .planet .cube {
+  width: 8vw;
+  height: 8vw;
+  animation-duration: 30s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 1) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 4vw);
+}
+.galaxy .box:nth-of-type( 1) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(4vw, 0, 4vw);
+}
+.galaxy .box:nth-of-type( 1) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-4vw, 0, 4vw);
+}
+.galaxy .box:nth-of-type( 1) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 4vw);
+}
+.galaxy .box:nth-of-type( 1) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -4vw, 4vw);
+}
+.galaxy .box:nth-of-type( 1) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 4vw, 4vw);
+}
+.galaxy .box:nth-of-type( 1) .planet .face,
+.galaxy .box:nth-of-type( 1) .planet .face::before,
+.galaxy .box:nth-of-type( 1) .planet .face::after {
+  background-color: rgba(255, 215, 0, .25);
+  border: 0.4vw solid #ccac00;
+  box-shadow: 0 0 2vw 0.5vw #ffe766 inset;
+}
+.galaxy .box:nth-of-type( 2) .planet {
+  left: 7vw;
+  transform-origin: -7vw;
+  animation-duration: 2.5s;
+}
+.galaxy .box:nth-of-type( 2) .planet .cube {
+  width: 1vw;
+  height: 1vw;
+  animation-duration: 4s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(1, 0, 0, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 2) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 2) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0.5vw, 0, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 2) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-0.5vw, 0, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 2) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 2) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -0.5vw, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 2) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0.5vw, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 2) .planet .face,
+.galaxy .box:nth-of-type( 2) .planet .face::before,
+.galaxy .box:nth-of-type( 2) .planet .face::after {
+  background-color: rgba(181, 89, 42, .25);
+  border: 0.05vw solid #8c4520;
+  box-shadow: 0 0 0.25vw 0.0625vw #dc9069 inset;
+}
+
+.galaxy .box:nth-of-type( 2) .planet + .orbit {
+  width: 14.1vw;
+  height: 14.1vw;
+}
+
+.galaxy .box:nth-of-type( 2) .planet + .orbit,
+.galaxy .box:nth-of-type( 2) .planet + .orbit::before,
+.galaxy .box:nth-of-type( 2) .planet + .orbit::after {
+  border-width: 0.1vw;
+}
+
+.galaxy .box:nth-of-type( 2) .planet + .orbit::before {
+  width: 13.9vw;
+  height: 13.9vw;
+}
+
+.galaxy .box:nth-of-type( 2) .planet + .orbit::after {
+  width: 14.3vw;
+  height: 14.3vw;
+}
+
+.galaxy .box:nth-of-type( 3) .planet {
+  left: 10.1vw;
+  transform-origin: -10.1vw;
+  animation-duration: 1.5s;
+}
+
+.galaxy .box:nth-of-type( 3) .planet .cube {
+  width: 1.2vw;
+  height: 1.2vw;
+  animation-duration: 2s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 3) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 3) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0.6vw, 0, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 3) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-0.6vw, 0, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 3) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 3) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -0.6vw, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 3) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0.6vw, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 3) .planet .face,
+.galaxy .box:nth-of-type( 3) .planet .face::before,
+.galaxy .box:nth-of-type( 3) .planet .face::after {
+  background-color: rgba(119, 65, 129, .25);
+  border: 0.06vw solid #58305f;
+  box-shadow: 0 0 0.3vw 0.075vw #ac71b7 inset;
+}
+
+.galaxy .box:nth-of-type( 3) .planet + .orbit {
+  width: 20.32vw;
+  height: 20.32vw;
+}
+
+.galaxy .box:nth-of-type( 3) .planet + .orbit,
+.galaxy .box:nth-of-type( 3) .planet + .orbit::before,
+.galaxy .box:nth-of-type( 3) .planet + .orbit::after {
+  border-width: 0.12vw;
+}
+
+.galaxy .box:nth-of-type( 3) .planet + .orbit::before {
+  width: 20.08vw;
+  height: 20.08vw;
+}
+
+.galaxy .box:nth-of-type( 3) .planet + .orbit::after {
+  width: 20.56vw;
+  height: 20.56vw;
+}
+
+.galaxy .box:nth-of-type( 4) .planet {
+  left: 13.3vw;
+  transform-origin: -13.3vw;
+  animation-duration: 5s;
+}
+
+.galaxy .box:nth-of-type( 4) .planet .cube {
+  width: 2vw;
+  height: 2vw;
+  animation-duration: 5s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 4) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 1vw);
+}
+
+.galaxy .box:nth-of-type( 4) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(1vw, 0, 1vw);
+}
+
+.galaxy .box:nth-of-type( 4) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-1vw, 0, 1vw);
+}
+
+.galaxy .box:nth-of-type( 4) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 1vw);
+}
+
+.galaxy .box:nth-of-type( 4) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -1vw, 1vw);
+}
+
+.galaxy .box:nth-of-type( 4) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 1vw, 1vw);
+}
+
+.galaxy .box:nth-of-type( 4) .planet .face,
+.galaxy .box:nth-of-type( 4) .planet .face::before,
+.galaxy .box:nth-of-type( 4) .planet .face::after {
+  background-color: rgba(0, 209, 255, .25);
+  border: 0.1vw solid #00a7cc;
+  box-shadow: 0 0 0.5vw 0.125vw #66e3ff inset;
+}
+
+.galaxy .box:nth-of-type( 4) .planet + .orbit {
+  width: 26.8vw;
+  height: 26.8vw;
+}
+
+.galaxy .box:nth-of-type( 4) .planet + .orbit,
+.galaxy .box:nth-of-type( 4) .planet + .orbit::before,
+.galaxy .box:nth-of-type( 4) .planet + .orbit::after {
+  border-width: 0.2vw;
+}
+
+.galaxy .box:nth-of-type( 4) .planet + .orbit::before {
+  width: 26.4vw;
+  height: 26.4vw;
+}
+
+.galaxy .box:nth-of-type( 4) .planet + .orbit::after {
+  width: 27.2vw;
+  height: 27.2vw;
+}
+
+.galaxy .box:nth-of-type( 5) .planet {
+  left: 17.5vw;
+  transform-origin: -17.5vw;
+  animation-duration: 10s;
+}
+.galaxy .box:nth-of-type( 5) .planet .cube {
+  width: 1.6vw;
+  height: 1.6vw;
+  animation-duration: 7.5s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 5) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 0.8vw);
+}
+
+.galaxy .box:nth-of-type( 5) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0.8vw, 0, 0.8vw);
+}
+
+.galaxy .box:nth-of-type( 5) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-0.8vw, 0, 0.8vw);
+}
+
+.galaxy .box:nth-of-type( 5) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 0.8vw);
+}
+
+.galaxy .box:nth-of-type( 5) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -0.8vw, 0.8vw);
+}
+
+.galaxy .box:nth-of-type( 5) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0.8vw, 0.8vw);
+}
+
+.galaxy .box:nth-of-type( 5) .planet .face,
+.galaxy .box:nth-of-type( 5) .planet .face::before,
+.galaxy .box:nth-of-type( 5) .planet .face::after {
+  background-color: rgba(23, 185, 120, .25);
+  border: 0.08vw solid #118c5b;
+  box-shadow: 0 0 0.4vw 0.1vw #4de9aa inset;
+}
+
+.galaxy .box:nth-of-type( 5) .planet + .orbit {
+  width: 35.16vw;
+  height: 35.16vw;
+}
+
+.galaxy .box:nth-of-type( 5) .planet + .orbit,
+.galaxy .box:nth-of-type( 5) .planet + .orbit::before,
+.galaxy .box:nth-of-type( 5) .planet + .orbit::after {
+  border-width: 0.16vw;
+}
+
+.galaxy .box:nth-of-type( 5) .planet + .orbit::before {
+  width: 34.84vw;
+  height: 34.84vw;
+}
+
+.galaxy .box:nth-of-type( 5) .planet + .orbit::after {
+  width: 35.48vw;
+  height: 35.48vw;
+}
+
+.galaxy .box:nth-of-type( 6) .planet {
+  left: 20.15vw;
+  transform-origin: -20.15vw;
+  animation-duration: 20s;
+}
+
+.galaxy .box:nth-of-type( 6) .planet .cube {
+  width: 1.3vw;
+  height: 1.3vw;
+  animation-duration: 15s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(1, 0, 1, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 6) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 0.65vw);
+}
+
+.galaxy .box:nth-of-type( 6) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0.65vw, 0, 0.65vw);
+}
+
+.galaxy .box:nth-of-type( 6) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-0.65vw, 0, 0.65vw);
+}
+
+.galaxy .box:nth-of-type( 6) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 0.65vw);
+}
+
+.galaxy .box:nth-of-type( 6) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -0.65vw, 0.65vw);
+}
+
+.galaxy .box:nth-of-type( 6) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0.65vw, 0.65vw);
+}
+
+.galaxy .box:nth-of-type( 6) .planet .face,
+.galaxy .box:nth-of-type( 6) .planet .face::before,
+.galaxy .box:nth-of-type( 6) .planet .face::after {
+  background-color: rgba(183, 66, 66, .25);
+  border: 0.065vw solid #923434;
+  box-shadow: 0 0 0.325vw 0.08125vw #d58a8a inset;
+}
+
+.galaxy .box:nth-of-type( 6) .planet + .orbit {
+  width: 40.43vw;
+  height: 40.43vw;
+}
+
+.galaxy .box:nth-of-type( 6) .planet + .orbit,
+.galaxy .box:nth-of-type( 6) .planet + .orbit::before,
+.galaxy .box:nth-of-type( 6) .planet + .orbit::after {
+  border-width: 0.13vw;
+}
+
+.galaxy .box:nth-of-type( 6) .planet + .orbit::before {
+  width: 40.17vw;
+  height: 40.17vw;
+}
+
+.galaxy .box:nth-of-type( 6) .planet + .orbit::after {
+  width: 40.69vw;
+  height: 40.69vw;
+}
+
+.galaxy .box:nth-of-type( 7) .planet {
+  left: 24.05vw;
+  transform-origin: -24.05vw;
+  animation-duration: 10s;
+}
+
+.galaxy .box:nth-of-type( 7) .planet .cube {
+  width: 2.5vw;
+  height: 2.5vw;
+  animation-duration: 10s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(-1, 0, 0, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 7) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 1.25vw);
+}
+
+.galaxy .box:nth-of-type( 7) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(1.25vw, 0, 1.25vw);
+}
+
+.galaxy .box:nth-of-type( 7) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-1.25vw, 0, 1.25vw);
+}
+
+.galaxy .box:nth-of-type( 7) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 1.25vw);
+}
+
+.galaxy .box:nth-of-type( 7) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -1.25vw, 1.25vw);
+}
+
+.galaxy .box:nth-of-type( 7) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 1.25vw, 1.25vw);
+}
+
+.galaxy .box:nth-of-type( 7) .planet .face,
+.galaxy .box:nth-of-type( 7) .planet .face::before,
+.galaxy .box:nth-of-type( 7) .planet .face::after {
+  background-color: rgba(253, 95, 0, .25);
+  border: 0.125vw solid #ca4c00;
+  box-shadow: 0 0 0.625vw 0.15625vw #ff9e64 inset;
+}
+
+.galaxy .box:nth-of-type( 7) .planet + .orbit {
+  width: 48.35vw;
+  height: 48.35vw;
+}
+
+.galaxy .box:nth-of-type( 7) .planet + .orbit,
+.galaxy .box:nth-of-type( 7) .planet + .orbit::before,
+.galaxy .box:nth-of-type( 7) .planet + .orbit::after {
+  border-width: 0.25vw;
+}
+
+.galaxy .box:nth-of-type( 7) .planet + .orbit::before {
+  width: 47.85vw;
+  height: 47.85vw;
+}
+
+.galaxy .box:nth-of-type( 7) .planet + .orbit::after {
+  width: 48.85vw;
+  height: 48.85vw;
+}
+
+.galaxy .box:nth-of-type( 8) .planet {
+  left: 29.8vw;
+  transform-origin: -29.8vw;
+  animation-duration: 3s;
+}
+
+.galaxy .box:nth-of-type( 8) .planet .cube {
+  width: 2.6vw;
+  height: 2.6vw;
+  animation-duration: 10s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(0, 1, 1, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 8) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 1.3vw);
+}
+
+.galaxy .box:nth-of-type( 8) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(1.3vw, 0, 1.3vw);
+}
+
+.galaxy .box:nth-of-type( 8) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-1.3vw, 0, 1.3vw);
+}
+
+.galaxy .box:nth-of-type( 8) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 1.3vw);
+}
+
+.galaxy .box:nth-of-type( 8) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -1.3vw, 1.3vw);
+}
+
+.galaxy .box:nth-of-type( 8) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 1.3vw, 1.3vw);
+}
+
+.galaxy .box:nth-of-type( 8) .planet .face,
+.galaxy .box:nth-of-type( 8) .planet .face::before,
+.galaxy .box:nth-of-type( 8) .planet .face::after {
+  background-color: rgba(56, 89, 139, .25);
+  border: 0.13vw solid #294267;
+  box-shadow: 0 0 0.65vw 0.1625vw #678bc2 inset;
+}
+
+.galaxy .box:nth-of-type( 8) .planet + .orbit {
+  width: 59.86vw;
+  height: 59.86vw;
+}
+
+.galaxy .box:nth-of-type( 8) .planet + .orbit,
+.galaxy .box:nth-of-type( 8) .planet + .orbit::before,
+.galaxy .box:nth-of-type( 8) .planet + .orbit::after {
+  border-width: 0.26vw;
+}
+
+.galaxy .box:nth-of-type( 8) .planet + .orbit::before {
+  width: 59.34vw;
+  height: 59.34vw;
+}
+
+.galaxy .box:nth-of-type( 8) .planet + .orbit::after {
+  width: 60.38vw;
+  height: 60.38vw;
+}
+
+.galaxy .box:nth-of-type( 9) .planet {
+  left: 33.7vw;
+  transform-origin: -33.7vw;
+  animation-duration: 4s;
+}
+
+.galaxy .box:nth-of-type( 9) .planet .cube {
+  width: 1.2vw;
+  height: 1.2vw;
+  animation-duration: 5s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(0, -1, -1, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 9) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 9) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0.6vw, 0, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 9) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-0.6vw, 0, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 9) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 9) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -0.6vw, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 9) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0.6vw, 0.6vw);
+}
+
+.galaxy .box:nth-of-type( 9) .planet .face,
+.galaxy .box:nth-of-type( 9) .planet .face::before,
+.galaxy .box:nth-of-type( 9) .planet .face::after {
+  background-color: rgba(255, 120, 174, .25);
+  border: 0.06vw solid #ff458f;
+  box-shadow: 0 0 0.3vw 0.075vw #ffdeeb inset;
+}
+
+.galaxy .box:nth-of-type( 9) .planet + .orbit {
+  width: 67.52vw;
+  height: 67.52vw;
+}
+
+.galaxy .box:nth-of-type( 9) .planet + .orbit,
+.galaxy .box:nth-of-type( 9) .planet + .orbit::before,
+.galaxy .box:nth-of-type( 9) .planet + .orbit::after {
+  border-width: 0.12vw;
+}
+
+.galaxy .box:nth-of-type( 9) .planet + .orbit::before {
+  width: 67.28vw;
+  height: 67.28vw;
+}
+
+.galaxy .box:nth-of-type( 9) .planet + .orbit::after {
+  width: 67.76vw;
+  height: 67.76vw;
+}
+
+.galaxy .box:nth-of-type( 10) .planet {
+  left: 36.3vw;
+  transform-origin: -36.3vw;
+  animation-duration: 20s;
+}
+
+.galaxy .box:nth-of-type( 10) .planet .cube {
+  width: 1vw;
+  height: 1vw;
+  animation-duration: 15s;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate3d(0, 1, -1, 360deg);
+  }
+}
+
+.galaxy .box:nth-of-type( 10) .planet .face:first-child {
+  transform: rotate3d(0, 1, 0, 0deg) translate3d(0, 0, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 10) .planet .face:first-child::before {
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0.5vw, 0, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 10) .planet .face:first-child::after {
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(-0.5vw, 0, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 10) .planet .face:last-child {
+  transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 10) .planet .face:last-child::before {
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -0.5vw, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 10) .planet .face:last-child::after {
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0.5vw, 0.5vw);
+}
+
+.galaxy .box:nth-of-type( 10) .planet .face,
+.galaxy .box:nth-of-type( 10) .planet .face::before,
+.galaxy .box:nth-of-type( 10) .planet .face::after {
+  background-color: rgba(123, 119, 255, .25);
+  border: 0.05vw solid #4a44ff;
+  box-shadow: 0 0 0.25vw 0.0625vw #deddff inset;
+}
+
+.galaxy .box:nth-of-type( 10) .planet + .orbit {
+  width: 72.7vw;
+  height: 72.7vw;
+}
+
+.galaxy .box:nth-of-type( 10) .planet + .orbit,
+.galaxy .box:nth-of-type( 10) .planet + .orbit::before,
+.galaxy .box:nth-of-type( 10) .planet + .orbit::after {
+  border-width: 0.1vw;
+}
+
+.galaxy .box:nth-of-type( 10) .planet + .orbit::before {
+  width: 72.5vw;
+  height: 72.5vw;
+}
+
+.galaxy .box:nth-of-type( 10) .planet + .orbit::after {
+  width: 72.9vw;
+  height: 72.9vw;
+}
+
+@keyframes galaxyani {
+  0% {
+    transform: translate3d(0, -5vw, 0) rotate3d(1, 1, 1, -45deg);
+  }
+  100% {
+    transform: translate3d(0, 5vw, 0) rotate3d(1, 1, 1, 45deg);
+  }
+}
+
+.planet {
+  animation-name: orbitani;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.orbit {
+  transform: rotate3d(1, 0, 0, 90deg);
+}
+
+.orbit, .orbit::before, .orbit::after {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+}
+
+.orbit::before, .orbit::after {
+  content: '';
+}
+
+.orbit {
+  border-color: #323232;
+}
+
+.orbit::before {
+  border-color: #0d7377;
+}
+
+.orbit::after {
+  border-color: #14ffec;
+}
+
+.cube {
+  animation-name: rotation;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.face, .face::before, .face::after {
+  width: 100%;
+  height: 100%;
+}
+
+.face::before, .face::after {
+  content: '';
+  position: absolute;
+  box-sizing: content-box;
+}
+
+@keyframes orbitani {
+  100% {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+}

@@ -1,0 +1,46 @@
+{% extends 'posts/post_base.html' %}
+
+{% block prepost %}
+  <div class="col-md-4">
+    <h3>Welcome to the posts page! <a href="{% url 'posts:for_user' username=user.username %}">@{{user.username}}</a></h3>
+    {% if user.is_authenticated %}
+      <h1><b>Hi! {{user.username}}</b></h1>
+      <div class="card card-with-shadow">
+        <div class="content">
+          <h3>Your Groups</h3>
+          <ul>
+            {% for member_group in user_groups %}
+            <li class='group li-with-bullet'>
+              <a href="{% url 'groups:single' slug=member_group.slug %}">{{member_group.name}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="card card-with-shadow">
+        <div class="content">
+          <h3>All Other Groups</h3>
+          <ul>
+            {% for other_group in other_groups %}
+            <li class='group li-with-bullet'>
+              <a href="{% url 'groups:single' slug=other_group.slug %}">{{other_group.name}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <a href="{% url 'groups:create' %}" class='btn btn-lg btn-primary'>
+      <span class='glyphicon glyphicon-plus-sign'></span>  Create A New Post!</a>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block post_content %}
+<div class="col-md-8">
+  <center><h2 style='color:red'>All posts by <b>{{concerned_username}}</b></h2></center>
+  {% for post in post_list %}
+    {% include 'posts/_post.html' %}
+    <br>
+  {% endfor %}
+</div>
+{% endblock %}

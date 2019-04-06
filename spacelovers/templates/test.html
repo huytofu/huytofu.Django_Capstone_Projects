@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Thank you for logging in!</h1>
+<br>
+<div class="cosmos">
+    <div class="galaxy">
+      {% with ''|center:10 as range %}
+      {% for _ in range %}
+        <div class="box">
+          <div class="planet">
+            <div class="cube">
+              <div class="face"></div>
+              <div class="face"></div>
+            </div>
+          </div>
+          <div class="orbit"></div>
+        </div>
+      {% endfor %}
+      {% endwith %}
+    </div>
+</div>
+{% endblock %}
